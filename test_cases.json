@@ -1,0 +1,16 @@
+{
+  "problem_one_cases": [
+    {
+      "beginWord": "hit",
+      "endWord": "cog",
+      "wordList": ["hot", "dot", "dog", "lot", "log", "cog"],
+      "expectedOutput": 5
+    },
+    {
+      "beginWord": "hit",
+      "endWord": "cog",
+      "wordList": ["lol", "lol", "lol", "lol", "lol", "cog"],
+      "expectedOutput": 0
+    }
+  ]
+}
