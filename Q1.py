@@ -4,14 +4,24 @@ from collections import deque
 def ProblemOne():
     begin_word: str = "hit"
     end_word: str = "cog"
-    word_list: list[str] = ["hat", "cat", "car", "bar", "bog", "cog"]
+    word_list: list[str] = ["hot", "dot", "dog", "cog"]
 
     print(TransformWord(begin_word, end_word, word_list))
 
 
-def TransformWord(begin_word: str, end_word: str, word_list: list[str]):
-    # if sk != endWord, return 0
-    if word_list[len(word_list) - 1] != end_word:
+def TransformWord(begin_word: str, end_word: str, word_list: list[str]) -> int:
+    """Transform word sequence, breadth first search
+
+    Args:
+        begin_word (str): begin word
+        end_word (str): end word
+        word_list (list[str]): list of words
+
+    Returns:
+        _type_: total number of sequence steps
+    """
+    # if end word not in list
+    if end_word not in word_list:
         return 0
 
     curr_word: str = begin_word

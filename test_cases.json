@@ -11,6 +11,65 @@
       "endWord": "cog",
       "wordList": ["lol", "lol", "lol", "lol", "lol", "cog"],
       "expectedOutput": 0
+    },
+    {
+      "beginWord": "hit",
+      "endWord": "cog",
+      "wordList": ["hot", "dot", "dog", "cog"],
+      "expectedOutput": 5
+    }
+  ],
+  "problem_two_cases": [
+    {
+      "isConnected": [
+        [1, 1, 0],
+        [1, 1, 1],
+        [0, 1, 1]
+      ],
+      "expectedOutput": 1
+    },
+    {
+      "isConnected": [
+        [1, 1, 0],
+        [1, 1, 0],
+        [0, 0, 1]
+      ],
+      "expectedOutput": 2
+    },
+    {
+      "isConnected": [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ],
+      "expectedOutput": 3
+    },
+    {
+      "isConnected": [
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1]
+      ],
+      "expectedOutput": 3
+    },
+    {
+      "isConnected": [
+        [1, 1, 0, 0, 0],
+        [1, 1, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 1, 1],
+        [0, 0, 0, 1, 1]
+      ],
+      "expectedOutput": 2
+    },
+    {
+      "isConnected": [
+        [1, 0, 0, 0],
+        [0, 1, 1, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 1]
+      ],
+      "expectedOutput": 3
     }
   ]
 }
