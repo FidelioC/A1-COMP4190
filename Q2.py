@@ -23,3 +23,11 @@ def DFS(is_connected: list[list[int]], visited: set, city_index: int):
         if connection not in visited and is_connected[city_index][connection] == 1:
             visited.add(connection)
             DFS(is_connected, visited, connection)
+
+
+def main():
+    ProblemTwo()
+
+
+if __name__ == "__main__":
+    main()
