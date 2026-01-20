@@ -17,6 +17,18 @@
       "endWord": "cog",
       "wordList": ["hot", "dot", "dog", "cog"],
       "expectedOutput": 5
+    },
+    {
+      "beginWord": "hot",
+      "endWord": "dog",
+      "wordList": ["hot", "dog", "dot"],
+      "expectedOutput": 3
+    },
+    {
+      "beginWord": "a",
+      "endWord": "c",
+      "wordList": ["a", "b", "c"],
+      "expectedOutput": 2
     }
   ],
   "problem_two_cases": [

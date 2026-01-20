@@ -4,7 +4,7 @@ from collections import deque
 def ProblemOne():
     begin_word: str = "hit"
     end_word: str = "cog"
-    word_list: list[str] = ["hot", "dot", "dog", "cog"]
+    word_list: list[str] = ["hot", "dot", "dog", "lot", "log", "cog"]
 
     print(TransformWord(begin_word, end_word, word_list))
 
@@ -24,22 +24,21 @@ def TransformWord(begin_word: str, end_word: str, word_list: list[str]) -> int:
     if end_word not in word_list:
         return 0
 
-    curr_word: str = begin_word
-    total_sequence: int = 0
-
-    queue = deque(word_list)  # initialize double sided queue
+    queue = deque()  # initialize double sided queue
+    visited = set()
+    start_sequence = 1
+    queue.append((begin_word, start_sequence))
 
     while queue:
-        word = queue.popleft()
-        if CheckAdjacentWords(curr_word, word):
-            curr_word = word
-            total_sequence += 1
+        queue_word, sequence = queue.popleft()
+        for list_word in word_list:
+            if list_word not in visited and CheckAdjacentWords(queue_word, list_word):
+                if list_word == end_word:
+                    return sequence + 1
+                queue.append((list_word, sequence + 1))
+                visited.add(list_word)
 
-    # sequence disconnected at the middle somewhere
-    if curr_word != end_word:
-        return 0
-
-    return total_sequence
+    return 0
 
 
 def CheckAdjacentWords(str_one: str, str_two: str) -> bool:
@@ -65,3 +64,11 @@ def CheckAdjacentWords(str_one: str, str_two: str) -> bool:
                 return False
 
     return difference == 1
+
+
+def main():
+    ProblemOne()
+
+
+if __name__ == "__main__":
+    main()
