@@ -17,40 +17,47 @@ def hike_dijkstra(heights: list[list[int]]):
 
     # start from top left
     queue = [(0, 0, 0)]  # row, col, height with prev neighbor
-    visited = set((0, 0))
 
-    min_height = 0
+    # to record each node height effort so far
+    distance = [[math.inf for _ in range(col_length)] for _ in range(row_length)]
+    distance[0][0] = 0
 
     while queue:
         queue.sort(key=lambda x: x[2])  # sort the queue by height ascending
         row, col, height = queue.pop(0)  # get the lowest possible height step
-        min_height = max(min_height, height)
 
         # reached the end
         if row == row_length - 1 and col == col_length - 1:
-            return min_height
+            return height
 
-        visited.add((row, col))
-
-        # get the node we are currently at
+        # get the node height we are currently at
         curr_node_height = heights[row][col]
 
         # for the current node, calculate all possible neighbors height step
         possible_neighbors = find_neighbors(row, col, row_length, col_length)
         for neighbor_row, neighbor_col in possible_neighbors:
-            if (neighbor_row, neighbor_col) not in visited:
-                neighbor_height = heights[neighbor_row][neighbor_col]
+            neighbor_height = heights[neighbor_row][neighbor_col]
 
+            # step between neighbor and the current node
+            height_step = abs(curr_node_height - neighbor_height)
+
+            # get the maximum absolute difference
+            new_distance = max(height, height_step)
+
+            # only append to queue if new max absolute difference is
+            # lower than the last recorded distance
+            if new_distance < distance[neighbor_row][neighbor_col]:
+                distance[neighbor_row][neighbor_col] = new_distance
                 # calculate the height step between each of the neighbor with the current node
                 queue.append(
                     (
                         neighbor_row,
                         neighbor_col,
-                        abs(curr_node_height - neighbor_height),
+                        new_distance,
                     )
                 )
 
-    return min_height
+    return 0
 
 
 def find_neighbors(
