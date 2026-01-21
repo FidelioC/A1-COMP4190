@@ -1,10 +1,15 @@
+import math
+
+
 def ProblemThree():
+    heights = [[1, 10, 6], [1, 1, 1], [1, 1, 1]]
     print(find_neighbors(2, 0, 3, 3))
+    print(hike_dijkstra(heights))
     return 0
 
 
 def hike_dijkstra(heights: list[list[int]]):
-    if len(heights) <= 0:
+    if not heights or not heights[0]:
         return 0
 
     row_length = len(heights)
@@ -12,12 +17,38 @@ def hike_dijkstra(heights: list[list[int]]):
 
     # start from top left
     queue = [(0, 0, 0)]  # row, col, height with prev neighbor
+    visited = set((0, 0))
+
     min_height = 0
 
     while queue:
-        node = queue.pop()
-        row, col, height = node
+        queue.sort(key=lambda x: x[2])  # sort the queue by height ascending
+        row, col, height = queue.pop(0)  # get the lowest possible height step
+        min_height = max(min_height, height)
+
+        # reached the end
+        if row == row_length - 1 and col == col_length - 1:
+            return min_height
+
+        visited.add((row, col))
+
+        # get the node we are currently at
+        curr_node_height = heights[row][col]
+
+        # for the current node, calculate all possible neighbors height step
         possible_neighbors = find_neighbors(row, col, row_length, col_length)
+        for neighbor_row, neighbor_col in possible_neighbors:
+            if (neighbor_row, neighbor_col) not in visited:
+                neighbor_height = heights[neighbor_row][neighbor_col]
+
+                # calculate the height step between each of the neighbor with the current node
+                queue.append(
+                    (
+                        neighbor_row,
+                        neighbor_col,
+                        abs(curr_node_height - neighbor_height),
+                    )
+                )
 
     return min_height
 
@@ -34,7 +65,7 @@ def find_neighbors(
         col_length (int): length of matrix column
 
     Returns:
-        list[tuple[int, int]]: list of tuples for the respective neighbors bounded by matrix length (row and column)
+        list[tuple[int, int]]: list of tuples for the respective neighbors index bounded by matrix length (row and column)
     """
     left = (0, -1)
     right = (0, 1)

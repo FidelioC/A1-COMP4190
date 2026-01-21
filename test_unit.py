@@ -2,6 +2,7 @@ import json
 import pytest
 import Q1
 import Q2
+import Q3
 from enum import StrEnum
 
 
@@ -14,6 +15,7 @@ class CasesMetaData(StrEnum):
 
     CASES_TEST_ONE = "problem_one_cases"
     CASES_TEST_TWO = "problem_two_cases"
+    CASES_TEST_THREE = "problem_three_cases"
 
 
 def load_problem_test_cases(test_cases_name: str):
@@ -44,4 +46,13 @@ def test_problem_one(case):
 )
 def test_problem_two(case):
     result = Q2.CountProvinces(case["isConnected"])
+    assert result == case["expectedOutput"]
+
+
+# ==== PROBLEM THREE TESTS ==== #
+@pytest.mark.parametrize(
+    "case", load_problem_test_cases(CasesMetaData.CASES_TEST_THREE.value)
+)
+def test_problem_two(case):
+    result = Q3.hike_dijkstra(case["heights"])
     assert result == case["expectedOutput"]

@@ -83,5 +83,46 @@
       ],
       "expectedOutput": 3
     }
+  ],
+  "problem_three_cases": [
+    {
+      "heights": [
+        [1, 2, 2],
+        [3, 8, 2],
+        [5, 3, 5]
+      ],
+      "expectedOutput": 2
+    },
+    {
+      "heights": [
+        [1, 10, 6],
+        [1, 1, 1],
+        [1, 1, 1]
+      ],
+      "expectedOutput": 0
+    },
+    {
+      "heights": [
+        [1, 100, 1],
+        [1, 100, 1],
+        [1, 1, 1]
+      ],
+      "expectedOutput": 0
+    },
+    {
+      "heights": [
+        [7, 7, 7],
+        [7, 7, 7],
+        [7, 7, 7]
+      ],
+      "expectedOutput": 0
+    },
+    {
+      "heights": [
+        [1, 1000],
+        [1000, 1]
+      ],
+      "expectedOutput": 999
+    }
   ]
 }
