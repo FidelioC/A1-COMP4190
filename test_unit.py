@@ -3,6 +3,7 @@ import pytest
 import Q1
 import Q2
 import Q3
+import Q4
 from enum import StrEnum
 
 
@@ -16,6 +17,7 @@ class CasesMetaData(StrEnum):
     CASES_TEST_ONE = "problem_one_cases"
     CASES_TEST_TWO = "problem_two_cases"
     CASES_TEST_THREE = "problem_three_cases"
+    CASES_TEST_FOUR = "problem_four_cases"
 
 
 def load_problem_test_cases(test_cases_name: str):
@@ -53,6 +55,16 @@ def test_problem_two(case):
 @pytest.mark.parametrize(
     "case", load_problem_test_cases(CasesMetaData.CASES_TEST_THREE.value)
 )
-def test_problem_two(case):
+def test_problem_three(case):
     result = Q3.HikeDijkstra(case["heights"])
+    assert result == case["expectedOutput"]
+
+
+# ==== PROBLEM FOUR TESTS ==== #
+@pytest.mark.parametrize(
+    "case", load_problem_test_cases(CasesMetaData.CASES_TEST_FOUR.value)
+)
+def test_problem_four(case):
+    graph = {int(k): v for k, v in case["graph"].items()}
+    result = Q4.FindGoal(graph, case["start"], case["goal"], case["max_depth"])
     assert result == case["expectedOutput"]
