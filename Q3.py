@@ -3,12 +3,11 @@ import math
 
 def ProblemThree():
     heights = [[1, 10, 6], [1, 1, 1], [1, 1, 1]]
-    print(find_neighbors(2, 0, 3, 3))
-    print(hike_dijkstra(heights))
+    print(HikeDijkstra(heights))
     return 0
 
 
-def hike_dijkstra(heights: list[list[int]]):
+def HikeDijkstra(heights: list[list[int]]):
     if not heights or not heights[0]:
         return 0
 
@@ -34,7 +33,7 @@ def hike_dijkstra(heights: list[list[int]]):
         curr_node_height = heights[row][col]
 
         # for the current node, calculate all possible neighbors height step
-        possible_neighbors = find_neighbors(row, col, row_length, col_length)
+        possible_neighbors = FindNeighbors(row, col, row_length, col_length)
         for neighbor_row, neighbor_col in possible_neighbors:
             neighbor_height = heights[neighbor_row][neighbor_col]
 
@@ -60,7 +59,7 @@ def hike_dijkstra(heights: list[list[int]]):
     return 0
 
 
-def find_neighbors(
+def FindNeighbors(
     row: int, col: int, row_length: int, col_length: int
 ) -> list[tuple[int, int]]:
     """Given row and col, calculate the respective neighbors (bounded by the row and col length)

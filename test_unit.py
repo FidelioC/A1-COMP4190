@@ -54,5 +54,5 @@ def test_problem_two(case):
     "case", load_problem_test_cases(CasesMetaData.CASES_TEST_THREE.value)
 )
 def test_problem_two(case):
-    result = Q3.hike_dijkstra(case["heights"])
+    result = Q3.HikeDijkstra(case["heights"])
     assert result == case["expectedOutput"]
