@@ -3,6 +3,7 @@
 \usepackage{amsmath, amssymb}
 
 \setlength{\mathindent}{0pt}
+\allowdisplaybreaks
 
 \title{COMP 4190 Assignment 1 Answer}
 \author{Fidelio Ciandy, 7934456}
@@ -18,31 +19,63 @@
 \section*{Problem 5}
 
 \section*{Problem 6}
-\[
-\begin{aligned}
+\begin{align*}
 (a)\;& \nabla_x f(x) = \tfrac12 (A + A^T)x - b \\
+    & \text{Since A is symmetric, thus, } A = A^T \\
+    & \nabla_x f(x) = Ax - b \\
 (b)\;& x^* : \nabla f(x^*) = 0 \\
-    & \tfrac12 (A + A^T)x^* - b = 0 \\
-    & \tfrac12 (A + A^T)x^* = b \\
-    & (A + A^T) x^* = 2b \\
-    & x^* = \frac{2b}{(A + A^T)} \\
+    & Ax^* - b = 0 \\
+    & Ax^* = b \\
+    & A^{-1} (A x^*) = A^{-1} b \\
+    & I x^* = A^{-1} b\\
+    & x^* = A^{-1} b\\
 (c)\;&
-\end{aligned}
-\]
-
+\end{align*}
 
 \section*{Problem 7}
-\[
-\begin{aligned}
+\begin{align*}
 (a)\;& \nabla f(x) = 2(x - 2)\\
-(b)\;& x_k+1 = x_k - \alpha \nabla f(X_k) \\
-    & x_k+1 = x_k - \alpha 2(x-2) \\
+(b)\;& x_{k+1} = x_k - \alpha \nabla f(X_k) \\
+    & x_{k+1} = x_k - \alpha 2(x-2) \\
 (c)\;& x^* : \nabla f(x^*) = 0 \\
     & \text{So, } x^* = 2  \\
 (d)\;& \text{if step size $\alpha$ is too large: oscillations (no convergence)} \\
     & \text{if step size $\alpha$ is too small: slow convergence} \\
-(e)\;& 
-\end{aligned}
-\]
+(e)\;& x_{k+1} = x_k - \alpha 2(x-2) \\
+    & = x_k - 2\alpha x_k + 4\alpha \\
+    & = (1 - 2\alpha)x_k + 4\alpha \\
+    & \text{Example, let } (1-2\alpha) = b \\
+    & x_1 = x_0 b + 4 \alpha \\
+    & \\
+    & x_2 = x_1 b + 4 \alpha \\
+    & = (x_0 b + 4 \alpha) b + 4 \alpha \\
+    & = x_0 b^2 + 4 \alpha b + 4 \alpha \\
+    & = x_0 b^2 + 4 \alpha (b + 1) \\
+    & \\
+    & x_3 = x_2 b + 4 \alpha \\
+    & = (x_0 b^2 + 4 \alpha (b+1)) b + 4\alpha \\
+    & = (x_0 b^2 + 4 \alpha b + 4 \alpha) b + 4 \alpha \\
+    & = x_0 b^3 + 4 \alpha b^2 + 4 \alpha b + 4 \alpha \\
+    & = x_0 b^3 + 4 \alpha (b^2 + b + 1) \\
+    & \\
+    & \text{So, in general for } x_k\\
+    & x_k = x_0 b^k + 4 \alpha (b^k + b^{k-1} + .... + 1) \\
+    & (b^k + b^{k-1} + .... + 1) \text{ is a geometric sum}\\
+    & \text{Thus, } \\
+    & x_k = x_0 b^k + 4 \alpha \left(\frac{1-b^k}{1-b}\right)\\
+    & = x_0 b^k + 4 \alpha \left( \frac{1-b^k}{2 \alpha}\right)\\
+    & = x_0 b^k + 2 (1-b^k)\\
+    & = x_0 b^k + 2 - 2b^k\\
+    & = (x_0 - 2) b^k + 2 \\
+    & = (1 - 2\alpha)^k (x_0 - 2) + 2 
+      \qquad \text{... sub in } b = (1-2\alpha)\\
+    & \\
+    & x_k \text{ converges to } x^* == x_k \text{ converges to } 2 
+      \text{, since } x^* = 2\\
+    & \text{Thus, } x_k - 2 \text{ converges to } 0\\ 
+    & \text{In other word, } (1 - 2\alpha)^k (x_0 - 2) \rightarrow 0\\
+    & \text{Furthermore, } x_0 \neq x^* \rightarrow x_0 - 2 \neq 0\\
+    & \text{Therefore, } (1-2\alpha)^k \rightarrow 0\\
+\end{align*}
 
 \end{document}
