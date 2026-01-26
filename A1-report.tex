@@ -13,11 +13,30 @@
 \maketitle
 
 \section*{Problem 1}
+
+For my first question, I have two functions with different purposes.
+
+\begin{itemize}
+  \item \textbf{TransformWord}
+  \begin{itemize}
+    \item This function performs the BFS.
+    \item Starting from the begin word, it performs BFS by comparing the current word with the words in the word list.
+    \item If the current word differs by a single letter, the new word is inserted into the queue and the sequence counter is incremented by 1.
+    \item The visited word is added to a set to prevent circular loops.
+    \item The loop continues until the end word is reached or the queue is empty.
+  \end{itemize}
+
+  \item \textbf{CheckAdjacentWords}
+  \begin{itemize}
+    \item This function will compare two strings and check whether those
+    two strings differ by 1 letter or not
+  \end{itemize}
+\end{itemize}
+
 \section*{Problem 2}
 \section*{Problem 3}
 \section*{Problem 4}
 \section*{Problem 5}
-
 \section*{Problem 6}
 \begin{align*}
 (a)\;& \nabla_x f(x) = \tfrac12 (A + A^T)x - b \\
