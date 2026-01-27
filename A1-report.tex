@@ -1,7 +1,7 @@
 \documentclass[12pt,fleqn]{article}
 \usepackage[margin=0.5in]{geometry}
 \usepackage{amsmath, amssymb}
-
+\usepackage{enumitem}
 \setlength{\mathindent}{0pt}
 \allowdisplaybreaks
 
@@ -37,6 +37,55 @@ For my first question, I have two functions with different purposes.
 \section*{Problem 3}
 \section*{Problem 4}
 \section*{Problem 5}
+\begin{enumerate}[label=(\alph*)]
+
+\item 
+The state $dp[i][j]$ represents the minimum number of edit operations to transform s into t. 
+For each value in i and j, the table will save the previous minimum comparison between prefixes of $s[1..i]$ and $t[1..j]$,
+and dp[m][n] will get the minimum value of the edit operations between the two strings.
+
+For recurrence, where $i \geq 1, j \geq 1$:
+\begin{itemize}
+  \item $dp[i-1][j] + 1 \rightarrow$ this specify the delete operation, where last character of $s_i$ is deleted from $s[1..i]$, to transform $s[1..i-1]$ into $t[1..j]$
+  \item $dp[i][j-1] + 1 \rightarrow$ this specify the insert operation, where we would like to insert character $t_j$ into string s, transforming $s[1..i]$ into $t[1..j-1]$.
+  \item $dp[i-1][j-1] + l \rightarrow$ this specify the substitution operation, 
+  \begin{itemize}
+    \item where if $s_i = t_j$ we won't add 1, so cost is 0
+    \item otherwise, if $s_i \neq t_j$ , we will add 1 to substitute the value
+  \end{itemize}
+\end{itemize}
+
+\item 
+The time complexity is $O(m \times n)$. 
+
+Since the two strings $s$ and $t$ have lengths $m$ and $n$, $i$ ranges from 0 to $m$, and $j$ ranges from 0 to $n$
+the dp table has $(m+1)(n+1)$ cells.
+
+Futhermore, the calculation of each dp entry using the three recurrences (insertion, deletion, substitution), all of those operations are just accessing the array, 
+thus this can be considered to be $O(1)$ as the time complexity.
+
+Thus, since each entry is filled using constant number of operations $O(1)$ and each result is being stored in an $(m+1)(n+1)$ array.
+Therefore, the time complexity is $O(m \times n)$. 
+
+\item 
+The memory/ space complexity of this DP implementation is $O(m \times n)$. 
+
+Same reasoning as the previous part, since the two strings $s$ and $t$ have lengths $m$ and $n$, $i$ ranges from 0 to $m$, and $j$ ranges from 0 to $n$
+the dp table has $(m+1)(n+1)$ cells. Thus, the memory complexity is $O(m \times n)$. 
+
+\item 
+From the recurrence formula, to fill a row in the DP array, we require only one row from the previous calculation. 
+For instance for i=5, we only need to access 
+  \begin{itemize}
+    \item $dp[4][5] \rightarrow$ previous row, current column
+    \item $dp[5][4] \rightarrow$ current row, previous column
+    \item $dp[4][4] \rightarrow$ previous row, previous column
+  \end{itemize}
+Knowing how these calculation work, we could just create two separate array prev[] and curr[].
+Where prev[] stores the values of row-1 and curr[] stores the current row i. Thus, this approach reduces the 
+space complexity to $O(n)$.
+\end{enumerate}
+
 \section*{Problem 6}
 \begin{align*}
 (a)\;& \nabla_x f(x) = \tfrac12 (A + A^T)x - b \\
