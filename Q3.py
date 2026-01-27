@@ -15,7 +15,7 @@ def HikeDijkstra(heights: list[list[int]]):
     col_length = len(heights[0])
 
     # start from top left
-    queue = [(0, 0, 0)]  # row, col, height with prev neighbor
+    queue = [(0, 0, 0)]  # row, col, current effort
 
     # to record each node height effort so far
     distance = [[math.inf for _ in range(col_length)] for _ in range(row_length)]

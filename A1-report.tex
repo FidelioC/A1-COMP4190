@@ -34,11 +34,81 @@ For my first question, I have two functions with different purposes.
 \end{itemize}
 
 \section*{Problem 2}
+For the second question, I also have two different functions.
+
+\begin{itemize}
+    \item \textbf{CountProvinces}
+    \begin {itemize}
+        \item This function will iterate through the isConnected array and check whether the 
+        current city has been visited or no
+        \item If the city hasn't been visited, we will visit that city and find the connection 
+        through DFS, by calling the DFS function
+        \item for unvisited city, we will increment the province count by 1
+    \end {itemize}
+
+    \item \textbf{DFS}
+    \begin{itemize}
+        \item This function will iterate through one of the isConnected entry 
+        \item if indeed, the city is connected (==1) with another city and that city hasn't been visited previously
+        \item we will recursively go into that city and repeat the same process (this is the DFS process)
+        \item Otherwise, we will go into the next iteration of the isConnected
+    \end{itemize}
+\end{itemize}
+
 \section*{Problem 3}
+    For the third question, I also have two different functions.
+\begin{itemize}
+    \item \textbf{HikeDijkstra}
+    \begin {itemize}
+       \item This is where the Dijkstra's algorithm is being used.
+       \item It will have two main data structures, 
+       \begin{itemize}
+            \item queue[(row, col, current effort)], where current effort is the min effort to reach the cell thus far
+            \item distance[][], to record each node effort thus far 
+            (this is how we use the Dijkstra algorithm, where we will always compare with the lower distance)
+       \end{itemize}
+       Two conditions for the loop to stop:
+       \begin{itemize}
+            \item the queue is empty
+            \item or, we have reached the end of the grid
+       \end{itemize}
+       \item Starting from the top left grid, for each node, it will find all the possible neighbors
+       \item for each of those neighbors, we will calculate the height of the neighbor with the current node
+       \item get the maximum absolute difference with the previous height 
+       \item and we would only append to the queue only if the new max difference is lower than the last recorded distance 
+       (this is where the Dijkstra's algorithm is happening)
+    \end {itemize}
+
+    \item \textbf{FindNeighbors}
+    \begin{itemize}
+       \item Given a specific entry (row, col), this function will calculate the neighbors
+       for that specific (row, col)
+    \end{itemize}
+\end{itemize}
+
 \section*{Problem 4}
+\begin{itemize}
+    \item \textbf{FindGoal}
+    \begin {itemize}
+        \item this is where the iterative deepening is being handled
+        \item This function is using a while loop, it will keep calling the DepthGoalSearch
+        until we found the result or until the maximum depth is reached
+        \item first, it will start with curr max depth = 0, the loop will keep incrementing the current max depth until it reach the max depth
+        \item if the current max depth has reached the max depth but result hasn't been found, it will return -1
+        \item Otherwise, it will keep trying curr max depth + 1
+    \end {itemize}
+    \item \textbf{DepthGoalSearch}
+    \begin {itemize}
+        \item This is where the DFS is happening
+        \item if the current node is equal to the goal, we return the current depth
+        \item if current depth is curr max depth, we return -1 (iterative deepening will be handled in the FindGoal function)
+        \item if children doesn't exist, return -1
+        \item else, it will use a depth first search, iterating through all its children first
+    \end {itemize}
+\end{itemize}
+
 \section*{Problem 5}
 \begin{enumerate}[label=(\alph*)]
-
 \item 
 The state $dp[i][j]$ represents the minimum number of edit operations to transform s into t. 
 For each value in i and j, the table will save the previous minimum comparison between prefixes of $s[1..i]$ and $t[1..j]$,
