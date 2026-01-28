@@ -6,7 +6,7 @@ def ProblemOne():
     end_word: str = "cog"
     word_list: list[str] = ["hot", "dot", "dog", "lot", "log", "cog"]
 
-    print(TransformWord(begin_word, end_word, word_list))
+    print("Question 1 Output: :" + TransformWord(begin_word, end_word, word_list))
 
 
 def TransformWord(begin_word: str, end_word: str, word_list: list[str]) -> int:

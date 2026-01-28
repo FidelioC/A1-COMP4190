@@ -1,8 +1,8 @@
 def ProblemTwo():
-    isConnected: list[list[int]] = [[1, 1, 0], [1, 1, 1], [0, 1, 1]]
+    isConnected: list[list[int]] = [[1, 1, 0], [1, 1, 1], [0, 0, 1]]
 
     count = CountProvinces(isConnected)
-    print(count)
+    print("Question 2 Output: " + count)
 
 
 def CountProvinces(is_connected: list[list[int]]) -> int:

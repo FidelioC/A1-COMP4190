@@ -2,9 +2,8 @@ import math
 
 
 def ProblemThree():
-    heights = [[1, 10, 6], [1, 1, 1], [1, 1, 1]]
-    print(HikeDijkstra(heights))
-    return 0
+    heights = [[1, 2, 2], [3, 8, 2], [5, 3, 5]]
+    print("Question 3 Output: " + HikeDijkstra(heights))
 
 
 def HikeDijkstra(heights: list[list[int]]):
