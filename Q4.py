@@ -14,7 +14,9 @@ def ProblemFour():
     start = 0
     goal = 6
     max_depth = 5
-    print("Question 4 Output: " + FindGoal(graph, start, goal, max_depth))
+
+    print("Question 4 Output: ")
+    print(FindGoal(graph, start, goal, max_depth))
 
 
 def FindGoal(graph: dict[int, list[int]], start: int, goal: int, max_depth: int) -> int:
