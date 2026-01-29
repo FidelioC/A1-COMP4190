@@ -1,10 +1,3 @@
-def ProblemTwo():
-    isConnected: list[list[int]] = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
-
-    print("Question 2 Output: ")
-    print(CountProvinces(isConnected))
-
-
 def CountProvinces(is_connected: list[list[int]]) -> int:
     visited = set()
     count: int = 0
@@ -26,7 +19,10 @@ def DFS(is_connected: list[list[int]], visited: set, city_index: int):
 
 
 def main():
-    ProblemTwo()
+    isConnected: list[list[int]] = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+
+    print("Question 2 Output: ")
+    print(CountProvinces(isConnected))
 
 
 if __name__ == "__main__":

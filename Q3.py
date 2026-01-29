@@ -1,13 +1,6 @@
 import math
 
 
-def ProblemThree():
-    heights = [[1, 2, 2], [3, 8, 2], [5, 3, 5]]
-
-    print("Question 3 Output: ")
-    print(HikeDijkstra(heights))
-
-
 def HikeDijkstra(heights: list[list[int]]):
     if not heights or not heights[0]:
         return 0
@@ -97,7 +90,10 @@ def FindNeighbors(
 
 
 def main():
-    ProblemThree()
+    heights = [[1, 2, 2], [3, 8, 2], [5, 3, 5]]
+
+    print("Question 3 Output: ")
+    print(HikeDijkstra(heights))
 
 
 if __name__ == "__main__":

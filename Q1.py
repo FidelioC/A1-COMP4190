@@ -1,15 +1,6 @@
 from collections import deque
 
 
-def ProblemOne():
-    begin_word: str = "hit"
-    end_word: str = "cog"
-    word_list: list[str] = ["hot", "dot", "dog", "lot", "log", "cog"]
-
-    print("Question 1 Output: ")
-    print(TransformWord(begin_word, end_word, word_list))
-
-
 def TransformWord(begin_word: str, end_word: str, word_list: list[str]) -> int:
     """Transform word sequence, breadth first search
 
@@ -68,7 +59,12 @@ def CheckAdjacentWords(str_one: str, str_two: str) -> bool:
 
 
 def main():
-    ProblemOne()
+    begin_word: str = "hit"
+    end_word: str = "cog"
+    word_list: list[str] = ["hot", "dot", "dog", "lot", "log", "cog"]
+
+    print("Question 1 Output: ")
+    print(TransformWord(begin_word, end_word, word_list))
 
 
 if __name__ == "__main__":
